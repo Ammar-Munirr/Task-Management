@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <form method="post" class="mt-5">
+        {% csrf_token %}
+        {{ form }}
+        <button type='submit'>
+            Login
+        </button>
+    </form>
+
+{% endblock content %}
