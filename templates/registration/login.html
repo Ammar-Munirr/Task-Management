@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
 
-    <form method="post" class="mt-5">
+<div class="container">
+    <form method="post" class="mt-5 mx-auto">
         {% csrf_token %}
-        {{ form }}
-        <button type='submit'>
-            Login
-        </button>
+        {{ form|crispy }}
+        <div class="text-left mt-2 mb-3">
+            <a href="{% url "password-reset" %}">Forgot Password?</a>
+        </div>
+        <button type='submit' class="btn btn-primary">Login</button>
     </form>
-
+</div>
 {% endblock content %}

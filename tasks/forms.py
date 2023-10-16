@@ -7,5 +7,12 @@ User = get_user_model()
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ("username",'first_name','last_name',)
+        fields = ("username",'first_name','last_name','email',)
         field_classes = {'username':UsernameField}
+        help_texts = {
+            'username': None,
+            'first_name': None,
+            'last_name': None,
+            'password1': None,
+            'password2': None,
+        }
