@@ -33,5 +33,5 @@ class TaskForm(forms.ModelForm):
         widgets = {
             'title':forms.TextInput(attrs={'placeholder':'Enter Title:'}),
             'description':forms.Textarea(attrs={'placeholder':'Enter Description:'}),
-            'due_date':forms.DateInput(attrs={'placeholder':'Enter Task Due Date'})
+            'due_date':forms.DateInput(attrs={'type': 'date','placeholder':'Enter Task Due Date'})
         }

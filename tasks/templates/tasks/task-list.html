@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="vh-50" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-9 col-xl-7">
+          <div class="card rounded-3">
+            <div class="card-body p-4">
+              <h4 class="text-center my-3 pb-3">{{request.user.username | upper}}'s Tasks</h4>
+  
+              <table class="table mb-4">
+                <thead>
+                  <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% if tasks %}
+                    {% for task in tasks %}
+                  <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td><a href="{% url "task-update" task.id %}" style='text-decoration: none;'>{{task.title}}</a></td>
+                    <td>To Do</td>
+                    <td>{{task.due_date}}</td>
+                    <td>
+                      <a href="{% url 'task-delete' task.id %}"><button class="btn btn-danger">Delete</button></a>
+                      <a href="{% url "task-update" task.id %}"><button class="btn btn-success ms-1">Update</button></a>
+                    </td>
+                  </tr>
+                  {% endfor %}                  
+                </tbody>
+              </table>
+              {% else %}
+              <h2 class='row d-flex justify-content-center align-items-center'>No Tasks Yet</h2>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock content %}
+
+
