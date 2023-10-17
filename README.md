@@ -25,16 +25,20 @@ This is a Task Management App built using Django. It provides a platform for use
    - Users can update and delete their tasks.
    - Users can view their tasks.
 
-3. **Search Functionality:**
+3. **Front End:**
+   - I Used Bootstrap5 for App Front End.
+   - Using django-crispy forms for better look and validation.
+
+4. **Search Functionality:**
    - Users can search for tasks by title and description.
 
-4. **Task Filtering:**
+5. **Task Filtering:**
    - Users can filter their tasks by status.
 
-5. **Error Messaging Handling:**
+6. **Error Messaging Handling:**
    - The app provides comprehensive error handling and user-friendly error messages.
 
-6. **Dockerization:**
+7. **Dockerization:**
    - The app can be containerized using Docker for easy deployment.
 
 ## Prerequisites
