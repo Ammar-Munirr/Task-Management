@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from .forms import CustomUserCreationForm,TaskForm
+from .forms import CustomUserCreationForm,TaskForm,TaskForm2
 from .models import Tasks
 
 def SignupView(request):
@@ -25,6 +25,7 @@ def TaskCreate(request):
                 user_form = form.save(commit=False)
                 user_form.user = request.user
                 user_form.save()
+                messages.success(request,'Task Added !')
                 return redirect('task-list')
         data = {
             'form':form
@@ -42,9 +43,9 @@ def TaskUpdate(request,pk):
         except:
             messages.success(request,'The Task Not Found !')
             return redirect('task-list')
-        form = TaskForm(instance=task)
+        form = TaskForm2(instance=task)
         if request.method=='POST':
-            form = TaskForm(request.POST,instance=task)
+            form = TaskForm2(request.POST,instance=task)
             if form.is_valid():
                 form.save()
                 messages.success(request,'Task Updated Successfully')

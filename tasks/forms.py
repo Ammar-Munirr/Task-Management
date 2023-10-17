@@ -35,3 +35,13 @@ class TaskForm(forms.ModelForm):
             'description':forms.Textarea(attrs={'placeholder':'Enter Description:'}),
             'due_date':forms.DateInput(attrs={'type': 'date','placeholder':'Enter Task Due Date'})
         }
+
+class TaskForm2(forms.ModelForm):
+    class Meta:
+        model = Tasks
+        fields = ['title','description','due_date','status']
+        widgets = {
+            'title':forms.TextInput(attrs={'placeholder':'Enter Title:'}),
+            'description':forms.Textarea(attrs={'placeholder':'Enter Description:'}),
+            'due_date':forms.DateInput(attrs={'type': 'date','placeholder':'Enter Task Due Date'})
+        }
