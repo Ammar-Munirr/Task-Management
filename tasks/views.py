@@ -71,6 +71,9 @@ def TaskList(request):
             q = request.GET['q']
             multiple_q = Q(Q(user=request.user) & (Q(title__icontains=q) | Q(description__icontains=q)))
             tasks = Tasks.objects.filter(multiple_q)
+        elif 'status' in request.GET:
+            status = request.GET['status']
+            tasks = Tasks.objects.filter(status=status)
         else:
             tasks = Tasks.objects.filter(user=request.user)
         data = {

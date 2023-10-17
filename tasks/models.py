@@ -7,7 +7,7 @@ class User(AbstractUser):
 
 
 TASK_STATUS = (
-    ('TO DO', 'TO DO'),
+    ('TO-DO', 'TO-DO'),
     ('IN-PROGRESS', 'IN-PROGRESS'),
     ('DONE', 'DONE'),
 )
@@ -17,4 +17,4 @@ class Tasks(models.Model):
     description = models.TextField(max_length=400)
     due_date = models.DateField()
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    status = models.CharField(max_length=13,choices=TASK_STATUS,default='TO DO')
+    status = models.CharField(max_length=13,choices=TASK_STATUS,default='TO-DO')
