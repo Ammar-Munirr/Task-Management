@@ -36,8 +36,8 @@
                     {% endif %}
                     <td>{{task.due_date}}</td>
                     <td>
-                      <a href="{% url 'task-delete' task.id %}"><button class="btn btn-danger">Delete</button></a>
-                      <a href="{% url "task-update" task.id %}"><button class="btn btn-success ms-1">Update</button></a>
+                      <a href="{% url 'task-delete' task.id %}"><button class="btn btn-danger btn-sm">Delete</button></a>
+                      <a href="{% url "task-update" task.id %}"><button class="btn btn-success ms-1 btn-sm">Update</button></a>
                     </td>
                   </tr>
                   {% endfor %}                  

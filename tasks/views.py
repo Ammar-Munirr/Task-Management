@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from .forms import CustomUserCreationForm,TaskForm,TaskForm2
 from .models import Tasks
+from django.db.models import Q
 
 def SignupView(request):
     form = CustomUserCreationForm()
@@ -15,10 +16,11 @@ def SignupView(request):
     }
     return render(request,'registration/signup.html',data)
 
-
-
 def home(request):
-    return render(request,'tasks/home.html')
+    if not request.user.is_authenticated:
+        return render(request,'tasks/home.html')
+    else:
+        return redirect('/task-list')
 
 def TaskCreate(request):
     if request.user.is_authenticated:
@@ -65,7 +67,12 @@ def TaskUpdate(request,pk):
 
 def TaskList(request):
     if request.user.is_authenticated:
-        tasks = Tasks.objects.filter(user=request.user)
+        if 'q' in request.GET:
+            q = request.GET['q']
+            multiple_q = Q(Q(user=request.user) & (Q(title__icontains=q) | Q(description__icontains=q)))
+            tasks = Tasks.objects.filter(multiple_q)
+        else:
+            tasks = Tasks.objects.filter(user=request.user)
         data = {
             'tasks':tasks
         }
