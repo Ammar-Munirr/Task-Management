@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="text-gray-700 body-font">
+    <div class="container mx-auto d-flex flex-column justify-content-center align-items-center py-5">
+        <img class="w-25 mb-4 object-fit object-center rounded" alt="hero" src="{% static 'images/main.svg' %}">
+        <div class="text-center w-100">
+            <h1 class="title-font h4 mb-3 font-weight-medium text-gray-900">
+                Task Management with Django
+            </h1>
+            <p class="mb-4">
+                This Tool helps you manage your Tasks.
+            </p>
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'login' %}" class="btn btn-primary btn-lg">
+                    Login
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

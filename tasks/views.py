@@ -16,6 +16,10 @@ def SignupView(request):
     return render(request,'registration/signup.html',data)
 
 
+
+def home(request):
+    return render(request,'tasks/home.html')
+
 def TaskCreate(request):
     if request.user.is_authenticated:
         form = TaskForm()

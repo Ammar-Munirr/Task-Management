@@ -25,7 +25,15 @@
                   <tr>
                     <th scope="row">{{ forloop.counter }}</th>
                     <td><a href="{% url "task-update" task.id %}" style='text-decoration: none;'>{{task.title}}</a></td>
-                    <td>{{task.status}}</td>
+                    {% if task.status == 'DONE' %}
+                    <td><span class="badge badge-success">{{task.status}}</span></td>
+                    {% endif %}
+                    {% if task.status == 'TO DO' %}
+                    <td><span class="badge badge-danger">{{task.status}}</span></td>
+                    {% endif %}
+                    {% if task.status == 'IN-PROGRESS' %}
+                    <td><span class="badge badge-warning">{{task.status}}</span></td>
+                    {% endif %}
                     <td>{{task.due_date}}</td>
                     <td>
                       <a href="{% url 'task-delete' task.id %}"><button class="btn btn-danger">Delete</button></a>
