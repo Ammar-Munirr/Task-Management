@@ -73,7 +73,7 @@ def TaskList(request):
             tasks = Tasks.objects.filter(multiple_q)
         elif 'status' in request.GET:
             status = request.GET['status']
-            tasks = Tasks.objects.filter(status=status)
+            tasks = Tasks.objects.filter(user=request.user).filter(status=status)
         else:
             tasks = Tasks.objects.filter(user=request.user)
         data = {
