@@ -7,7 +7,19 @@
         <div class="col col-lg-9 col-xl-7">
           <div class="card rounded-3">
             <div class="card-body p-4">
-              <h4 class="text-center my-3 pb-3">{{request.user.username | upper}}'s Tasks</h4>
+              <div class='d-flex justify-content-between align-items-center'>
+                <div>
+                  {% if tasks %}
+                  <a href="{% url "get-csv" %}"><button class="btn btn-info btn-sm" style='color:white;'>CSV</button></a>
+                  <a href="{% url "get-json" %}"><button class="btn btn-success ms-1 btn-sm">JSON</button></a>
+                  {% else %}
+                  <a href="#"><button class="btn btn-info btn-sm disabled" style='color:white;'>CSV</button></a>
+                  <a href="#"><button class="btn btn-success ms-1 btn-sm disabled">JSON</button></a>
+                  {% endif %}
+                </div>
+                <h4 class="text-center my-3 pb-3">{{request.user.username | upper}}'s Tasks</h4>
+                <div></div>
+              </div>
               <div class="container">
                 <h5><span style='color:red;'>Filtering</span></h5>
                 <form>
